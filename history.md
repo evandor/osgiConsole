@@ -26,3 +26,4 @@ http://www.primefaces.org/primeng/#/setup
 
   in angular.cli.json
   
+updating angular-cli: https://github.com/angular/angular-cli

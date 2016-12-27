@@ -14,6 +14,7 @@ import { FaqComponent } from './faq/faq.component';*/
 import { BundlesComponent } from './bundles/bundles.component';
 import { ServicesComponent } from './services/services.component';
 
+import { ConfigComponent } from './config/config.component'
 
 const appRoutes: Routes = [
   //{ path: 'framework',    component: FrameworkComponent },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
     //{ path: 'logs',         component: LogsComponent },
     //{ path: 'snapshots',    component: SnapshotsComponent },
     //{ path: 'runtime',      component: RuntimeComponent },
-    //{ path: 'config',       component: ConfigComponent },
+    { path: 'config',       component: ConfigComponent },
     //{ path: 'help',         component: HelpComponent },
     { path: '**',           component: BundlesComponent }
 ];

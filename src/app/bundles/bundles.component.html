@@ -2,9 +2,40 @@
 
 
 <p-tabView>
-    <p-tabPanel header="Bundles Overview">
-       Content 1
+
+    <p-tabPanel header="Bundles Overview">   
+        <app-errors></app-errors>
+        <div *ngIf="isShown('help_bundles_packagedep')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
+          <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_packagedep')"
+          style="font-size:small"><span aria-hidden="true">well...</span></button> Bundles export some of their packages
+          (with a package-related version), and they might depend on packages provided by other bundles (in a specific version
+          range). To be done...
+        </div>
+        <table class="table table-hover" style="table-layout: fixed; width:100%;white-space: nowrap;">
+        <thead>
+            <tr>
+            <th class="text-xs-right" style="width:50px;">ID</th>
+            <th>SymbolicName <input type="text" name="search_name" size="20" style="border: 0px solid gray;" [(ngModel)]="searchName"
+                /> <i class="fa fa-search" aria-hidden="true"></i></th>
+            <th style="width:120px;"># prov. Serv.</th>
+            <th style="width:120px;"># used Serv.</th>
+            <th style="width:200px;">Version</th>
+            <th style="width:100px;">Status</th>
+            <th style="width:120px;">Size (KB)</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
+            <td>{{bundle.id}}</td>
+            <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
+            <td>{{bundle.registeredServiceIds.length}}</td>
+            <td>{{bundle.usedServiceIds.length}}</td>
+            <td>{{bundle.version}}</td>
+            <td [innerHtml]="bundle.state | bundleState"></td>
+            <td>***</td>
+        </tr>
+        </table>
     </p-tabPanel>
+
     <p-tabPanel header="Adjacency Matrix">
         Content 2
     </p-tabPanel>
@@ -12,9 +43,6 @@
         Content 3    
     </p-tabPanel>
     <p-tabPanel header="Package Dependencies">
-        Content 3    
-    </p-tabPanel>
-    <p-tabPanel header="Size Distribution">
         Content 3    
     </p-tabPanel>
 </p-tabView>

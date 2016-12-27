@@ -1,0 +1,33 @@
+<h2><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Bundle <i>bundle.symbolicName</i>:</h2>
+
+
+<p-tabView>
+
+    <p-tabPanel header="Backend Configuration">   
+      <form (ngSubmit)="onSubmit()" #configForm="ngForm">
+        <div class="form-group">
+          <label for="endpoint">Name</label>
+          <input type="text" class="form-control" required [(ngModel)]="model.name" id="name" name="name"  #name="ngModel" >
+        </div>
+        <div class="form-group">
+          <label for="endpoint">Endpoint</label>
+          <input type="text" class="form-control" required [(ngModel)]="model.endpoint" id="endpoint" name="endpoint"  #name="ngModel" >
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" required [(ngModel)]="model.username" id="username" name="username"  #name="ngModel" >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" required [(ngModel)]="model.password" id="password" name="password"  #name="ngModel" >
+        </div>
+        <button type="submit" class="btn btn-default" [disabled]="!configForm.form.valid">Submit</button>
+      </form>        
+    </p-tabPanel>
+
+    <p-tabPanel header="Version">
+        <h1>webconsole.all</h1>
+        <p>{{version}}</p>
+    </p-tabPanel>
+</p-tabView>

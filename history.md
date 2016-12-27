@@ -27,3 +27,9 @@ http://www.primefaces.org/primeng/#/setup
   in angular.cli.json
   
 updating angular-cli: https://github.com/angular/angular-cli
+
+created new project and merged package.json etc
+
+reinstalling font-awesome: npm install font-awesome --save + 3rd party instructions on angular-cli
+
+ng g service providers/backend

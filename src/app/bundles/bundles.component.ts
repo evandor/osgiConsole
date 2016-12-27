@@ -77,11 +77,9 @@ export class BundlesComponent implements OnInit {
                 });
                 this._appGlobals.setBundleIdList(this.bundleIdList);
                 this._appGlobals.setIsLoading(false);
+                this._appGlobals.clearAlerts();
             }, error => {
-                console.log("adding error to alertsService...");
-                //this._alertsService.setError("could not access backend, please check configuration.");
                 this._appGlobals.setAlerts("could not access backend, please check configuration.");
-                this.logError("Error2: " + error);
             });
     }
 

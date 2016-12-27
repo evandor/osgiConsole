@@ -51,4 +51,8 @@ export class AppglobalsService {
     this._alerts.next(params);
   }
 
+  clearAlerts() {
+    this._alerts.next([]);
+  }
+
 }

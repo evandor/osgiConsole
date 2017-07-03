@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class OsgiConsolePage {
+export class OsgiConsole2Page {
   navigateTo() {
     return browser.get('/');
   }

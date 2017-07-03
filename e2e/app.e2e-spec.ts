@@ -1,14 +1,14 @@
-import { OsgiConsolePage } from './app.po';
+import { OsgiConsole2Page } from './app.po';
 
-describe('osgi-console App', function() {
-  let page: OsgiConsolePage;
+describe('osgi-console2 App', () => {
+  let page: OsgiConsole2Page;
 
   beforeEach(() => {
-    page = new OsgiConsolePage();
+    page = new OsgiConsole2Page();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });

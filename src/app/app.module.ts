@@ -4,21 +4,24 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BundlesComponent } from './bundles/bundles.component';
+import {AccordionModule, TabViewModule } from 'primeng/primeng';
+import { AppRoutingModule }     from './app-routing.module';
+import { ServicesComponent } from './services/services.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    BundlesComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
-      {
-        path: 'app',
-        component: AppComponent
-      }
-    ])
+    AccordionModule,
+    TabViewModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

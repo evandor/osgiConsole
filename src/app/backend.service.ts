@@ -1,32 +1,28 @@
-import { Injectable, OnInit, Component } from '@angular/core'
+import { Injectable, OnInit } from '@angular/core'
 import { Http, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Bundle } from '../domain/bundle';
-import { ExportPackage } from '../domain/exportPackage';
-//import { LogEntry } from '../domain/logEntry';
-import { Service } from '../domain/service';
-//import { Snapshot } from '../domain/snapshot';
-//import { RuntimeConfig } from '../domain/runtimeconfig';
+import { Bundle } from './domain/bundle';
+import { ExportPackage } from './domain/exportPackage';
+//import { LogEntry } from './domain/logEntry';
+import { Service } from './domain/service';
+//import { Snapshot } from './domain/snapshot';
+//import { RuntimeConfig } from './domain/runtimeconfig';
 
 /*import {ConfigService} from '../services/config.service';*/
-//import { AppglobalsService } from '../providers/appglobals.service';
-import { BackendConfig } from '../domain/backendconfig';
+import { AppGlobalsService } from './app-globals.service';
+import { BackendConfig } from './domain/backendconfig';
 
-@Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
-})
-export class ServicesComponent {
+@Injectable()
+export class BackendService {
 
   headers = new Headers();
   private config: BackendConfig;
 
-  constructor(private _http: Http) { //, private _appGlobals: AppglobalsService) {
-    //this._appGlobals._config.subscribe((config) => this.config = config);
-    //console.log("base url set to '" + this.config.endpoint + "'");
+  constructor(private _http: Http, private _appGlobals: AppGlobalsService) {
+    this._appGlobals._config.subscribe((config) => this.config = config);
+    console.log("base url set to '" + this.config.endpoint + "'");
     this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
     this.headers.append('Access-Control-Allow-Origin', '*');
   }
@@ -97,22 +93,23 @@ export class ServicesComponent {
   getLatestSnapshot(): Observable<Snapshot> {
     return this._http.get(this.config.endpoint + '/snapshotdetails/latest', { headers: this.headers })
       .map(res => res.json());
-  }*/
+  }
 
   createSnapshot() {
     return this._http.post(this.config.endpoint + '/snapshots/', JSON.stringify("create"), { headers: this.headers })
       //.map(res => res.json())
       ;
-  }
+  }*/
 
   getVersion() {
     return this._http.get(this.config.endpoint + '/client/version', { headers: this.headers })
       .map(res => res.text());
   }
 
- /* getRuntimeConfig(): Observable<RuntimeConfig> {
+  /*getRuntimeConfig(): Observable<RuntimeConfig> {
     return this._http.get(this.config.endpoint + '/runtimeconfig', { headers: this.headers })
       .map(res => res.json());
   }*/
+
 
 }

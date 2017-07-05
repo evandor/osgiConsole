@@ -24,7 +24,15 @@
             <th style="width:120px;">Size (KB)</th>
             </tr>
         </thead>
-        
+        <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
+            <td>{{bundle.id}}</td>
+            <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
+            <td>{{bundle.registeredServiceIds.length}}</td>
+            <td>{{bundle.usedServiceIds.length}}</td>
+            <td>{{bundle.version}}</td>
+            <td [innerHtml]="bundle.state | bundleState"></td>
+            <td>***</td>
+        </tr>
         </table>
     </p-tabPanel>
 

@@ -4,7 +4,7 @@ import { Component, OnInit, ElementRef, ChangeDetectionStrategy, OnChanges, Inpu
 import { NgFor } from '@angular/common';
 import { Router } from "@angular/router";
 
-import { BackendService } from '../backend.service';
+import { BackendService } from '../services/backend/backend.service';
 import { AppGlobalsService } from '../app-globals.service';
 
 import { Bundle } from '../domain/bundle';
@@ -45,7 +45,7 @@ export class BundlesComponent implements OnInit {
 
 
   ngOnInit() {
-    /*this._appGlobals.setIsLoading(true);
+    this._appGlobals.setIsLoading(true);
     this._backend.getBundles()
       .subscribe(res => {
         this.bundles = res;
@@ -62,7 +62,7 @@ export class BundlesComponent implements OnInit {
         //this._alertsService.setError("could not access backend, please check configuration.");
         this._appGlobals.setAlerts("could not access backend, please check configuration.");
         this.logError("Error2: " + error);
-      });*/
+      });
   }
 
   onTabClose(event) {

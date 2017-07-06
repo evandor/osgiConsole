@@ -2,7 +2,7 @@ import { Injectable, OnInit, Component } from '@angular/core'
 import { Http, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
+import {BackendService} from '../services/backend/backend.service';
 import { Bundle } from '../domain/bundle';
 import { ExportPackage } from '../domain/exportPackage';
 //import { LogEntry } from '../domain/logEntry';
@@ -11,7 +11,7 @@ import { Service } from '../domain/service';
 //import { RuntimeConfig } from '../domain/runtimeconfig';
 
 /*import {ConfigService} from '../services/config.service';*/
-//import { AppglobalsService } from '../providers/appglobals.service';
+import { AppGlobalsService } from '../app-globals.service';
 import { BackendConfig } from '../domain/backendconfig';
 
 @Component({
@@ -21,14 +21,24 @@ import { BackendConfig } from '../domain/backendconfig';
 })
 export class ServicesComponent {
 
+  services: Service[];
   headers = new Headers();
   private config: BackendConfig;
 
-  constructor(private _http: Http) { //, private _appGlobals: AppglobalsService) {
-    //this._appGlobals._config.subscribe((config) => this.config = config);
-    //console.log("base url set to '" + this.config.endpoint + "'");
+  constructor(private _http: Http, private _backend: BackendService, private _appGlobals: AppGlobalsService) {
+    this._appGlobals._config.subscribe((config) => this.config = config);
+    console.log("base url set to '" + this.config.endpoint + "'");
     this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
     this.headers.append('Access-Control-Allow-Origin', '*');
+  }
+
+  ngOnInit() {
+    this._appGlobals.setIsLoading(true);
+    this._backend.getServices()
+      .subscribe(res => {
+        this.services = res;
+        this._appGlobals.setIsLoading(false);
+      });
   }
 
   get(path) {
@@ -110,9 +120,9 @@ export class ServicesComponent {
       .map(res => res.text());
   }
 
- /* getRuntimeConfig(): Observable<RuntimeConfig> {
-    return this._http.get(this.config.endpoint + '/runtimeconfig', { headers: this.headers })
-      .map(res => res.json());
-  }*/
+  /* getRuntimeConfig(): Observable<RuntimeConfig> {
+     return this._http.get(this.config.endpoint + '/runtimeconfig', { headers: this.headers })
+       .map(res => res.json());
+   }*/
 
 }

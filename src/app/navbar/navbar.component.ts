@@ -15,31 +15,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: 'File',
-        items: [{
-          label: 'New',
-          icon: 'fa-plus',
-          items: [
-            { label: 'Project' },
-            { label: 'Other' },
-          ]
-        },
-        { label: 'Open' },
-        { label: 'Quit' }
-        ]
-      },
-      {
         label: 'Bundles',
-        icon: 'fa-edit',
-        url: '/bundles',
-        items: [
-          { label: 'Undo', icon: 'fa-mail-forward' },
-          { label: 'Redo', icon: 'fa-mail-reply' }
-        ]
+        icon: 'fa-th-large',
+        style: "{'color':'green'}",
+        url: '/bundles'
       },
       {
         label: 'Services',
-        icon: 'fa-edit',
+        icon: 'fa-play-circle',
         url: '/services'
       }
     ];

@@ -1,3 +1,11 @@
-<p>
-  services works!
-</p>
+<h2><i class="fa fa-play-circle" aria-hidden="true" style="color: orange"></i> Services</h2>
+
+<p-dataTable [value]="services">
+  <p-column field="id" header="ID" [style]="{'width':'40px','font-weight': 'bold'}"></p-column>
+  <p-column field="objectClass" header="ObjectClass" [sortable]="true" [filter]="true" filterPlaceholder="Search" filterMatchMode="contains"
+    [style]="{'width':'30%'}">
+  </p-column>
+  <p-column field="pid" header="PID"></p-column>
+  <p-column field="ranking" header="Ranking"></p-column>
+  <p-column field="provider" header="Provider"></p-column>
+</p-dataTable>

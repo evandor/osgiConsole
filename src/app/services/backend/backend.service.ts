@@ -3,16 +3,16 @@ import { Http, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Bundle } from './domain/bundle';
-import { ExportPackage } from './domain/exportPackage';
+import { Bundle } from '../../domain/bundle';
+import { ExportPackage } from '../../domain/exportPackage';
 //import { LogEntry } from './domain/logEntry';
-import { Service } from './domain/service';
+import { Service } from '../../domain/service';
 //import { Snapshot } from './domain/snapshot';
 //import { RuntimeConfig } from './domain/runtimeconfig';
 
 /*import {ConfigService} from '../services/config.service';*/
-import { AppGlobalsService } from './app-globals.service';
-import { BackendConfig } from './domain/backendconfig';
+import { AppGlobalsService } from '../../app-globals.service';
+import { BackendConfig } from '../../domain/backendconfig';
 
 @Injectable()
 export class BackendService {

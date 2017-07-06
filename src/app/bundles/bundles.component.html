@@ -3,49 +3,60 @@
 
 <p-tabView>
 
-    <p-tabPanel header="Bundles Overview">   
-        app-errors../app-errors
-        <div *ngIf="isShown('help_bundles_packagedep')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
-          <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_packagedep')"
-          style="font-size:small"><span aria-hidden="true">well...</span></button> Bundles export some of their packages
-          (with a package-related version), and they might depend on packages provided by other bundles (in a specific version
-          range). To be done...
-        </div>
-        <table class="table table-hover" style="table-layout: fixed; width:100%;white-space: nowrap;">
-        <thead>
-            <tr>
-            <th class="text-xs-right" style="width:50px;">ID</th>
-            <th>SymbolicName <input type="text" name="search_name" size="20" style="border: 0px solid gray;" [(ngModel)]="searchName"
-                /> <i class="fa fa-search" aria-hidden="true"></i></th>
-            <th style="width:120px;"># prov. Serv.</th>
-            <th style="width:120px;"># used Serv.</th>
-            <th style="width:200px;">Version</th>
-            <th style="width:100px;">Status</th>
-            <th style="width:120px;">Size (KB)</th>
-            </tr>
-        </thead>
-        <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
-            <td>{{bundle.id}}</td>
-            <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
-            <td>{{bundle.registeredServiceIds.length}}</td>
-            <td>{{bundle.usedServiceIds.length}}</td>
-            <td>{{bundle.version}}</td>
-            <td [innerHtml]="bundle.state | bundleState"></td>
-            <td>***</td>
+  <p-tabPanel header="Bundles Overview">
+    app-errors../app-errors
+    <div *ngIf="isShown('help_bundles_packagedep')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
+      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_packagedep')"
+        style="font-size:small"><span aria-hidden="true">well...</span></button> Bundles export some of their packages
+      (with a package-related version), and they might depend on packages provided by other bundles (in a specific version
+      range). To be done...
+    </div>
+    <table class="table table-hover" style="table-layout: fixed; width:100%;white-space: nowrap;">
+      <thead>
+        <tr>
+          <th class="text-xs-right" style="width:50px;">ID</th>
+          <th>SymbolicName <input type="text" name="search_name" size="20" style="border: 0px solid gray;" [(ngModel)]="searchName"
+            /> <i class="fa fa-search" aria-hidden="true"></i></th>
+          <th style="width:120px;"># prov. Serv.</th>
+          <th style="width:120px;"># used Serv.</th>
+          <th style="width:200px;">Version</th>
+          <th style="width:100px;">Status</th>
+          <th style="width:120px;">Size (KB)</th>
         </tr>
-        </table>
-    </p-tabPanel>
+      </thead>
+      <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
+        <td>{{bundle.id}}</td>
+        <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
+        <td>{{bundle.registeredServiceIds.length}}</td>
+        <td>{{bundle.usedServiceIds.length}}</td>
+        <td>{{bundle.version}}</td>
+        <td [innerHtml]="bundle.state | bundleState"></td>
+        <td>***</td>
+      </tr>
+    </table>
+  </p-tabPanel>
 
-    <p-tabPanel header="Adjacency Matrix">
-        app-errors../app-errors
-        Content 2
-    </p-tabPanel>
-    <p-tabPanel header="Service Dependencies">
-        app-errors../app-errors
-        Content 3    
-    </p-tabPanel>
-    <p-tabPanel header="Package Dependencies">
-        app-errors../app-errors
-        Content 3    
-    </p-tabPanel>
+  <p-tabPanel header="Adjacency Matrix">
+    app-errors../app-errors
+    <p-dataTable [value]="bundles" [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]">
+      <p-column field="id" header="ID" [style]="{'width':'40px','font-weight': 'bold'}"></p-column>
+      <p-column field="symbolicName" 
+                header="Symbolic Name" 
+                [sortable]="true" 
+                [filter]="true" filterPlaceholder="Search" filterMatchMode="contains" 
+                [style]="{'width':'40%'}">
+      </p-column>
+      <p-column field="providedServices" header="# prov. Serv."></p-column>
+      <p-column field="usedServices" header="# used Serv."></p-column>
+      <p-column field="version" header="Version" [style]="{'width':'180px'}"></p-column>
+      <p-column field="status" header="Status"></p-column>
+      <p-column field="size" header="Size" [sortable]="true"></p-column>
+    </p-dataTable>
+  </p-tabPanel>
+  <p-tabPanel header="Service Dependencies">
+    app-errors../app-errors Content 3
+  </p-tabPanel>
+  <p-tabPanel header="Package Dependencies">
+    app-errors../app-errors Content 3
+  </p-tabPanel>
 </p-tabView>

@@ -1,6 +1,6 @@
-import {ExportPackage} from '../domain/exportPackage';
-import {ImportPackage} from '../domain/importPackage';
-//import {Service} from '../domain/service';
+import { ExportPackage } from '../domain/exportPackage';
+import { ImportPackage } from '../domain/importPackage';
+import { Service } from '../domain/service';
 //import {ManifestHeader} from '../domain/manifestHeader';
 //import {WireDescriptor} from '../domain/wireDescriptor';
 
@@ -21,9 +21,9 @@ export class Bundle {
     exportPackage: ExportPackage[] = [];
     importPackage: ImportPackage[] = [];
     /*manifestHeaders: ManifestHeader;
-    wireDescriptor: WireDescriptor;
+    wireDescriptor: WireDescriptor;*/
     providedServices: Service[] = [];
-    servicesInUse: Service[] = [];*/
+    servicesInUse: Service[] = [];
     sourcePaths: string[];
     registeredServicesCount: number;
     scrMap: Map<string, string>;

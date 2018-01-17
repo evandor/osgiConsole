@@ -4,6 +4,8 @@ import 'polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AccordionModule, TabViewModule, MenuModule, MenubarModule,DataTableModule,SharedModule } from 'primeng/primeng';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
@@ -26,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     HomeComponent
   ],
   imports: [
@@ -33,6 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    MenuModule,
+    MenubarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

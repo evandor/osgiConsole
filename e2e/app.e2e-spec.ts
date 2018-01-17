@@ -1,14 +1,14 @@
-import { OsgiConsole2Page } from './app.po';
+import { AngularElectronPage } from './app.po';
+import { browser, element, by } from 'protractor';
 
-describe('osgi-console2 App', () => {
-  let page: OsgiConsole2Page;
+describe('angular-electron App', () => {
+  let page: AngularElectronPage;
 
   beforeEach(() => {
-    page = new OsgiConsole2Page();
+    page = new AngularElectronPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+  it('should display message saying App works !', () => {
+    expect(element(by.css('app-home h1')).getText()).toMatch('App works !');
   });
 });

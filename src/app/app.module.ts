@@ -1,50 +1,47 @@
+import 'zone.js/dist/zone-mix';
+import 'reflect-metadata';
+import 'polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
+
+// NG Translate
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { ElectronService } from './providers/electron.service';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { BundlesComponent } from './bundles/bundles.component';
-import { AccordionModule, TabViewModule, MenuModule, MenubarModule,DataTableModule,SharedModule } from 'primeng/primeng';
-import { AppRoutingModule }     from './app-routing.module';
-import { ServicesComponent } from './services/services.component';
-import { BundlesFilterPipe } from './bundles-filter.pipe';
-import { BundleStatePipe } from './bundle-state.pipe';
+import { HomeComponent } from './components/home/home.component';
 
-import { HttpModule } from '@angular/http';
-
-/*import { routing, appRoutingProviders }  from './app.routing';
-import {BundlesFilter} from './pipes/bundlesFilter.pipe';*/
-import { AppGlobalsService } from './app-globals.service';
-import { BackendService } from './services/backend/backend.service';
-import { ConfigService } from './config-service.service';
-//import { ConfigComponent } from './config/config.component';
-//import { ErrorsComponent } from './alerts/errors/errors.component';*/
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    BundlesComponent,
-    ServicesComponent,
-    BundlesFilterPipe,
-    BundleStatePipe
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    AccordionModule,
-    TabViewModule,
-    MenuModule,
-    MenubarModule,
-    DataTableModule,SharedModule,
+    HttpClientModule,
     AppRoutingModule,
-    CommonModule
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (HttpLoaderFactory),
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [AppGlobalsService, BackendService, ConfigService],
+  providers: [ElectronService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

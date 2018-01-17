@@ -11,6 +11,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { BundlesComponent } from './components/bundles/bundles.component';
+import { ServicesComponent } from './components/services/services.component';
+
+
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -19,6 +23,10 @@ import { ElectronService } from './providers/electron.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+
+import { HttpModule } from '@angular/http';
+
+import { BackendService } from './providers/backend/backend.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,6 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     NavbarComponent,
+    BundlesComponent,
+    ServicesComponent,
     HomeComponent
   ],
   imports: [
@@ -36,8 +46,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    HttpModule,
     MenuModule,
     MenubarModule,
+    TabViewModule,
+    DataTableModule,
+    SharedModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -46,7 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [ElectronService, BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

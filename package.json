@@ -21,7 +21,7 @@
     "lint": "ng lint",
     "start": "npm-run-all --parallel webpack:watch electron:serve",
     "webpack:watch": "webpack --watch",
-    "start:web": "webpack-dev-server --content-base . --port 4200 --inline",
+    "start:web": "webpack-dev-server --content-base . --port 5200 --inline",
     "build:electron:main": "tsc main.ts --outDir dist && copyfiles package.json dist && cd dist && npm install --prod && cd ..",
     "build": "webpack --display-error-details && npm run build:electron:main",
     "build:prod": "cross-env NODE_ENV=production npm run build",
@@ -38,10 +38,7 @@
   },
   "dependencies": {
     "@angular/animations": "^5.2.0",
-    "bootstrap-beta": "^4.0.0-beta",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.0.0",
-    "popper.js": "^1.12.3",
     "primeng": "^5.0.2"
   },
   "devDependencies": {

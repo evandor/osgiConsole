@@ -17,13 +17,13 @@ export class AppGlobalsService {
   public _alerts: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
   constructor(private _configService: ConfigService) {
-    var backendConfigString = localStorage.getItem('backend');
+    /*var backendConfigString = localStorage.getItem('backend');
     if (backendConfigString != null) {
       var backendConfig = JSON.parse(backendConfigString);
       this.setConfig(new BackendConfig(backendConfig['username,'], backendConfig['password'], backendConfig['endpoint'], backendConfig['name']));
-    } else {
+    } else {*/
       this.setConfig(new BackendConfig("webconsole", "webconsole", "http://" + location.hostname + ":2002/backend/v1", "default"));
-    }
+    //}
   }
 
   setIsLoading(isLoading: boolean) {

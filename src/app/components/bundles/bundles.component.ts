@@ -34,7 +34,7 @@ export class BundlesComponent implements OnInit {
   hidePageHelpFor: string = '';
   alerts: any;
 
-  constructor(private router: Router, private _backend: BackendService, private _appGlobals: AppGlobalsService) {
+  constructor(private router: Router, private _backend: BackendService/*, private _appGlobals: AppGlobalsService*/) {
     //_appGlobals._alerts.subscribe(value => this.alerts = value);
     //_appGlobals._filteredCount.subscribe(value => this.filteredCount = value);
     console.log("hier!!!")
@@ -46,8 +46,8 @@ export class BundlesComponent implements OnInit {
 
 
   ngOnInit() {
-    this._appGlobals.setIsLoading(true);
-    this._backend.getBundles()
+    //this._appGlobals.setIsLoading(true);
+    /*this._backend.getBundles()
       .subscribe(res => {
         this.bundles = res;
         this.bundles.forEach(bundle => {
@@ -56,14 +56,14 @@ export class BundlesComponent implements OnInit {
             this.maxSize = bundle.size;
           }
         });
-        this._appGlobals.setBundleIdList(this.bundleIdList);
-        this._appGlobals.setIsLoading(false);
+        //this._appGlobals.setBundleIdList(this.bundleIdList);
+        //this._appGlobals.setIsLoading(false);
       }, error => {
         console.log("adding error to alertsService...");
         //this._alertsService.setError("could not access backend, please check configuration.");
-        this._appGlobals.setAlerts("could not access backend, please check configuration.");
+        //this._appGlobals.setAlerts("could not access backend, please check configuration.");
         this.logError("Error2: " + error);
-      });
+      });*/
   }
 
   onTabClose(event) {

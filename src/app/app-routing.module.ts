@@ -11,12 +11,13 @@ import { ServicesComponent}     from './components/services/services.component';
 ];*/
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'bundles',  component: BundlesComponent }
+    { path: '', component: BundlesComponent },
+    { path: 'bundles',  component: BundlesComponent },
+    { path: 'services',  component: ServicesComponent }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
+    imports: [RouterModule.forRoot(routes,  { enableTracing: true, useHash: true })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

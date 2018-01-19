@@ -25,20 +25,20 @@ export class ServicesComponent {
   headers = new Headers();
   private config: BackendConfig;
 
-  constructor(private _http: Http, private _backend: BackendService, private _appGlobals: AppGlobalsService) {
-    this._appGlobals._config.subscribe((config) => this.config = config);
-    console.log("base url set to '" + this.config.endpoint + "'");
+  constructor(private _http: Http/*, private _backend: BackendService, private _appGlobals: AppGlobalsService*/) {
+    //this._appGlobals._config.subscribe((config) => this.config = config);
+    //console.log("base url set to '" + this.config.endpoint + "'");
     this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
     this.headers.append('Access-Control-Allow-Origin', '*');
   }
 
   ngOnInit() {
-    this._appGlobals.setIsLoading(true);
+    /*this._appGlobals.setIsLoading(true);
     this._backend.getServices()
       .subscribe(res => {
         this.services = res;
         this._appGlobals.setIsLoading(false);
-      });
+      });*/
   }
 
   get(path) {
@@ -61,7 +61,7 @@ export class ServicesComponent {
   }
 
   getBundleServices(id): Observable<Service[]> {
-    return this._http.get(this.config.endpoint + '/bundles/' + id + "/services", { headers: this.headers }).map(res => res.json());
+    return this._http.get('/bundles/' + id + "/services", { headers: this.headers }).map(res => res.json());
   }
 
   getBundleContents(id): Observable<Bundle> {

@@ -20,14 +20,14 @@ export class BackendService {
   headers = new Headers();
   private config: BackendConfig;
 
-  constructor(private _http: Http, private _appGlobals: AppGlobalsService) {
-    this._appGlobals._config.subscribe((config) => this.config = config);
-    console.log("base url set to '" + this.config.endpoint + "'");
+  constructor(private _http: Http/*, private _appGlobals: AppGlobalsService*/) {
+    //this._appGlobals._config.subscribe((config) => this.config = config);
+   // console.log("base url set to '" + this.config.endpoint + "'");
     this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
     this.headers.append('Access-Control-Allow-Origin', '*');
   }
 
-  get(path) {
+ /* get(path) {
     var headers = new Headers();
     headers.append('Authorization', 'Basic d2Vic29uc29sZTp3ZWJzb25zb2xl');
     return this._http.get(this.config.endpoint + path, { headers: headers }).map(res => res.json());
@@ -38,7 +38,7 @@ export class BackendService {
   }
 
   getBundles(): Observable<Bundle[]> {
-    return this._http.get(this.config.endpoint + '/bundles', { headers: this.headers })
+    return this._http.get('/bundles', { headers: this.headers })
       .map(res => res.json());
   }
 
@@ -78,7 +78,7 @@ export class BackendService {
   getMatchingPackages(part: string): Observable<ExportPackage[]> {
     return this._http.get(this.config.endpoint + '/packages/' + part, { headers: this.headers })
       .map(res => res.json());
-  }
+  }*/
 
   /*getLogs(): Observable<LogEntry[]> {
     return this._http.get(this.config.endpoint + '/logs', { headers: this.headers })

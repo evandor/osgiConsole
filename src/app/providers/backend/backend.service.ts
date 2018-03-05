@@ -42,11 +42,11 @@ export class BackendService {
       .map(res => res.json());
   }
 
-  /*getBundle(id): Observable<Bundle> {
-    return this._http.get(this.config.endpoint + '/bundles/' + id, { headers: this.headers }).map(res => res.json());
+  getBundle(id): Observable<Bundle> {
+    return this._http.get('http://localhost:2002/backend/v1/bundles/' + id, { headers: this.headers }).map(res => res.json());
   }
 
-  getBundleServices(id): Observable<Service[]> {
+  /*getBundleServices(id): Observable<Service[]> {
     return this._http.get(this.config.endpoint + '/bundles/' + id + "/services", { headers: this.headers }).map(res => res.json());
   }
 

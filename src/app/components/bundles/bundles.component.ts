@@ -121,6 +121,6 @@ export class BundlesComponent implements OnInit {
   }
 
   click2(name) {
-    console.log(name)
+    this.router.navigateByUrl('/bundles/0');
   }
 }

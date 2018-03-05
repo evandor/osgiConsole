@@ -12,6 +12,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BundlesComponent } from './components/bundles/bundles.component';
+import { BundleComponent } from './components/bundle/bundle.component';
 import { ServicesComponent } from './components/services/services.component';
 
 
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     NavbarComponent,
     BundlesComponent,
+    BundleComponent,
     ServicesComponent,
     HomeComponent
   ],

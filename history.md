@@ -9,7 +9,7 @@ http://www.primefaces.org/primeng/#/setup
   added
 
         "../node_modules/primeng/resources/primeng.min.css",
-        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/primeng/resources/themes/voclain/theme.css",
 
   in angular.cli.json
 

@@ -21,6 +21,9 @@ import { BundlesFilterPipe } from '../../bundles-filter.pipe'
 export class BundlesComponent implements OnInit {
 
   bundles: Bundle[];
+
+  selectedBundle: Bundle = null;
+
   searchId: string = "";
   public searchName: string = '';
   filteredCount: number = 0;
@@ -37,7 +40,6 @@ export class BundlesComponent implements OnInit {
   constructor(private router: Router, private _backend: BackendService/*, private _appGlobals: AppGlobalsService*/) {
     //_appGlobals._alerts.subscribe(value => this.alerts = value);
     //_appGlobals._filteredCount.subscribe(value => this.filteredCount = value);
-    console.log("hier!!!")
     this.hidePageHelpFor = localStorage.getItem('pageHelpBundles');
     if (this.hidePageHelpFor == null) {
       this.hidePageHelpFor = '';
@@ -46,8 +48,9 @@ export class BundlesComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log("hier!!")
     //this._appGlobals.setIsLoading(true);
-    /*this._backend.getBundles()
+    this._backend.getBundles()
       .subscribe(res => {
         this.bundles = res;
         this.bundles.forEach(bundle => {
@@ -63,7 +66,7 @@ export class BundlesComponent implements OnInit {
         //this._alertsService.setError("could not access backend, please check configuration.");
         //this._appGlobals.setAlerts("could not access backend, please check configuration.");
         this.logError("Error2: " + error);
-      });*/
+      });
   }
 
   onTabClose(event) {
@@ -115,5 +118,9 @@ export class BundlesComponent implements OnInit {
   showAllInlineHelp() {
     this.hidePageHelpFor = '';
     localStorage.removeItem('pageHelpBundles');
+  }
+
+  click2(name) {
+    console.log(name)
   }
 }

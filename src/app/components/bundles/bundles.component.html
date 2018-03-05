@@ -1,20 +1,26 @@
-<h2><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Bundle <i>bundle.symbolicName</i>:</h2>
+<h2><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Installed Bundles:</h2>
 
 <p-tabView>
   <p-tabPanel header="Bundles Overview">
-    app-errors../app-errors
-    <p-dataTable [value]="bundles" [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]">
-      <p-column field="id" header="ID" [style]="{'width':'40px','font-weight': 'bold'}"></p-column>
+    <!--app-errors../app-errors-->
+    <p-dataTable [value]="bundles" [rows]="20" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]"
+      selectionMode="single" [(selection)]="selectedBundle"  dataKey="id"
+      (onRowClick)="click2($event.data)"
+    >
+      <p-column field="id" 
+                header="ID" 
+                [sortable]="true" 
+                [style]="{'width':'40px','font-weight': 'bold'}"></p-column>
       <p-column field="symbolicName" 
                 header="Symbolic Name" 
                 [sortable]="true" 
                 [filter]="true" filterPlaceholder="Search" filterMatchMode="contains" 
                 [style]="{'width':'40%'}">
       </p-column>
-      <p-column field="providedServices" header="# prov. Serv."></p-column>
+      <p-column field="providedServicesCount" header="# prov. Serv."></p-column>
       <p-column field="usedServices" header="# used Serv."></p-column>
       <p-column field="version" header="Version" [style]="{'width':'180px'}"></p-column>
-      <p-column field="status" header="Status"></p-column>
+      <p-column field="state" header="Status"></p-column>
       <p-column field="size" header="Size" [sortable]="true"></p-column>
     </p-dataTable>
   </p-tabPanel>
@@ -26,4 +32,5 @@
   </p-tabPanel>
 </p-tabView>
 
-<a routerLink="/services" routerLinkActive="active">Services</a>
+<!--<a routerLink="/services" routerLinkActive="active">Services</a>-->
+

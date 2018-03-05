@@ -25,7 +25,7 @@ export class ServicesComponent {
   headers = new Headers();
   private config: BackendConfig;
 
-  constructor(private _http: Http/*, private _backend: BackendService, private _appGlobals: AppGlobalsService*/) {
+  constructor(private _http: Http, private _backend: BackendService/*, private _appGlobals: AppGlobalsService*/) {
     //this._appGlobals._config.subscribe((config) => this.config = config);
     //console.log("base url set to '" + this.config.endpoint + "'");
     this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
@@ -33,12 +33,12 @@ export class ServicesComponent {
   }
 
   ngOnInit() {
-    /*this._appGlobals.setIsLoading(true);
+    /*this._appGlobals.setIsLoading(true);*/
     this._backend.getServices()
       .subscribe(res => {
         this.services = res;
-        this._appGlobals.setIsLoading(false);
-      });*/
+        //this._appGlobals.setIsLoading(false);
+      });
   }
 
   get(path) {

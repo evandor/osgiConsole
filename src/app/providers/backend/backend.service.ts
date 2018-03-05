@@ -35,14 +35,14 @@ export class BackendService {
 
   getFramework(): Observable<any> {
     return this._http.get(this.config.endpoint + '/framework', { headers: this.headers }).map(res => res.json());
-  }
+  }*/
 
   getBundles(): Observable<Bundle[]> {
-    return this._http.get('/bundles', { headers: this.headers })
+    return this._http.get('http://localhost:2002/backend/v1/bundles', { headers: this.headers })
       .map(res => res.json());
   }
 
-  getBundle(id): Observable<Bundle> {
+  /*getBundle(id): Observable<Bundle> {
     return this._http.get(this.config.endpoint + '/bundles/' + id, { headers: this.headers }).map(res => res.json());
   }
 
@@ -58,14 +58,14 @@ export class BackendService {
   getBundleFileContents(id: string, filename: string): Observable<string> {
     return this._http.get(this.config.endpoint + '/bundles/' + id + "/contents/" + filename, { headers: this.headers })
       .map(res => res.json());
-  }
+  }*/
 
   getServices(): Observable<Service[]> {
-    return this._http.get(this.config.endpoint + '/services', { headers: this.headers })
+    return this._http.get('http://localhost:2002/backend/v1/services', { headers: this.headers })
       .map(res => res.json());
   }
 
-  getService(id): Observable<Service> {
+  /*getService(id): Observable<Service> {
     return this._http.get(this.config.endpoint + '/services/' + id, { headers: this.headers })
       .map(res => res.json());
   }

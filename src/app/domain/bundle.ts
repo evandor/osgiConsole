@@ -31,4 +31,8 @@ export class Bundle {
     constructor() {
         this.scrMap = new Map<string, string>();
     }
+
+    providedServicesCount() {
+        return this.providedServices.length
+    }
 }
